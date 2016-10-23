@@ -1,0 +1,56 @@
+" Tips and Tricks {{{
+" :%s/\s\+$//  - To remove trailing whitespaces
+" :%s/^\s\+//  - To remove leading whitepsace
+" :%normal 2x - Remove first two chars of everyline
+" :%normal << - Move indentation to left for every line:
+" :%s/$PATTERN/\r/g  - Replace delimter with a new-line char
+"
+" }}}
+set nocompatible                "cp:    turns off strct vi compatibility
+
+"Search {{{
+set incsearch                   "is:    automatically begins searching as you type
+set ignorecase                  "ic:    ignores case when pattern matching
+set smartcase                   "scs:   ignores ignorecase when pattern contains uppercase characters
+set hlsearch                    "hls:   highlights search results
+syntax enable
+" }}}
+
+" Line Wrap {{{
+set backspace=start,eol,indent "bs:    allows you to backspace over the listed character type
+set linebreak                   "lbr:   causes vim to not wrap text in the middle of a word
+"set wrap                        "wrap:  wraps lines by default
+"}}}
+
+" Editing {{{
+set showmatch                   "sm:    flashes matching brackets or parentheses
+set shiftround                  "sr:    rounds indent to a multiple of shiftwidth
+" set nu
+set ruler
+set complete=.,w,b,u            "cpt:   default insert completion minus tags and included files
+set virtualedit=block           "ve:    let cursor move past the last char in <C-V> mode
+set nostartofline               "sol:   avoid moving cursor to BOL when jumping around
+"}}}
+
+"Code Formatting {{{
+set sw=4
+set ts=4
+"set expandtab
+set smarttab                    "sta:   helps with backspacing because of expandtab
+set shiftround                  "sr:    rounds indent to a multiple of shiftwidth
+""source ~/cscope_vim
+""}}}
+
+
+""" Misc {{{
+imap <F9> <Insert>
+imap <D-g> <Insert>
+set showmatch
+set matchtime=3
+"""}}}
+
+if &diff
+    colorscheme diff
+    """ colorscheme my-evening
+    set diffopt+=iwhite
+endif
